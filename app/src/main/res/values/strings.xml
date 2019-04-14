@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">WebDataViewer</string>
+
+    <string name="transition_id_preview">transitionPreview</string>
+</resources>
