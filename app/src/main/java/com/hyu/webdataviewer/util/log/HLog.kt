@@ -108,12 +108,14 @@ class HLog private constructor() {
 
                 traceElements = null
 
+                val resultMessage = logMakeBuilder.toString()
+
                 when (Companion.level) {
-                    LEVEL_VERBOSE -> Log.v(tag, message)
-                    LEVEL_DEBUG -> Log.d(tag, message)
-                    LEVEL_INFO -> Log.i(tag, message)
-                    LEVEL_WARN -> Log.w(tag, message)
-                    LEVEL_ERROR -> Log.e(tag, message)
+                    LEVEL_VERBOSE -> Log.v(tag, resultMessage)
+                    LEVEL_DEBUG -> Log.d(tag, resultMessage)
+                    LEVEL_INFO -> Log.i(tag, resultMessage)
+                    LEVEL_WARN -> Log.w(tag, resultMessage)
+                    LEVEL_ERROR -> Log.e(tag, resultMessage)
                 }
 
                 logMakeBuilder.setLength(0)
