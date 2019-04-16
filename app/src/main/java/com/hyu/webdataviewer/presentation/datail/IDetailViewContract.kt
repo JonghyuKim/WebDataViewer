@@ -15,4 +15,9 @@ interface IDetailViewContract {
         fun showDetailView(targetTranslateName : String, model : Any)
         fun startPostponedEnterTransition()
     }
+
+    companion object {
+        const val ARGS_STR_TRANSITION_NAME = "transitionName"
+        const val ARGS_OBJECT_MODEL = "model"
+    }
 }

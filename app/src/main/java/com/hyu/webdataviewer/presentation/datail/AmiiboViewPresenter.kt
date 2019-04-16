@@ -19,12 +19,12 @@ class AmiiboViewPresenter(private val view: IDetailViewContract.View) : IDetailV
         var transitionName  = ""
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            transitionName = args.getString("transitionName")
+            transitionName = args.getString(IDetailViewContract.ARGS_STR_TRANSITION_NAME)
         }
 
         HLog.d("loadModel : $transitionName")
 
-        var amiiboModel = args.getSerializable("model") as AmiiboModel
+        var amiiboModel = args.getSerializable(IDetailViewContract.ARGS_OBJECT_MODEL) as AmiiboModel
 
         view.showDetailView(transitionName, amiiboModel)
     }
