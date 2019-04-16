@@ -22,9 +22,9 @@ class AmiiboViewFragment : DetailFragment(){
 
                 presenter.bindImage (context, iv_detail_main_image, model.image)
                 tv_detail_title.text = model.name
-                tv_amiibo_content1.text = model.amiiboSeries
-                tv_amiibo_content2.text = model.character
-                tv_amiibo_content3.text = model.gameSeries
+                tv_amiibo_series.text = model.amiiboSeries
+                tv_amiibo_character.text = model.character
+                tv_amiibo_game_series.text = model.gameSeries
             }
         }
     }

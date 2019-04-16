@@ -5,12 +5,12 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:background="#ffffff"
-        android:layout_margin="5dp">
+        android:layout_margin="@dimen/preview_item_padding">
 
     <ImageView
             android:id="@+id/iv_preview_image"
             android:layout_width="wrap_content"
-            android:layout_height="243dp"
+            android:layout_height="@dimen/preview_main_image_big_height"
             android:src="@drawable/wait"
             android:layout_centerInParent="true"
             android:scaleType="fitCenter"/>
@@ -20,11 +20,11 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Hello World!"
-            android:textSize="23dp"
+            android:textSize="@dimen/preview_discript_big_text"
             android:gravity="bottom|right"
             android:textColor="#ffffff"
             android:background="#50000000"
-            android:padding="5dp"
+            android:padding="@dimen/preview_item_padding"
             android:layout_alignParentBottom="true"
             android:layout_alignParentRight="true"/>
 
