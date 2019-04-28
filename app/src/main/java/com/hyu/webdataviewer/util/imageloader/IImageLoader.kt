@@ -5,6 +5,7 @@ import android.widget.ImageView
 
 interface IImageLoader {
     fun bindImg(context: Context, targetView: ImageView, imgPath : String)
+    var onCompliteBinding : (() -> Unit)?
 
     fun release()
 }
