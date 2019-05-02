@@ -59,8 +59,8 @@ val previewModule = module{
 }
 
 val baseModule = module {
-    single<IMainActivityContract.Presenter> { (view : IMainActivityContract.View) -> MainPresenter(view) }
-    single<IBaseFragmentContract.View> { PreviewFragment() }
+    factory<IMainActivityContract.Presenter> { (view : IMainActivityContract.View) -> MainPresenter(view) }
+    factory<IBaseFragmentContract.View> { PreviewFragment() }
 }
 
 val otherModule = module {
