@@ -36,8 +36,8 @@ class PreviewItemHolder(parent: ViewGroup)
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
                 iv_preview_image.transitionName = context.getString(R.string.transition_id_preview) + layoutPosition
             }
-            imageLoader.bindImg(context, iv_preview_image, model.getPreviewUrl())
-            tv_preview_title.text = model.getPreviewTitle()
+            imageLoader.bindImg(context, iv_preview_image, model.image)
+            tv_preview_title.text = model.name
             setOnClickListener{
                 itemClickListener?.onClick(it, layoutPosition, model)
             }

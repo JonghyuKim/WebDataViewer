@@ -32,7 +32,7 @@ class MainActivity : AppCompatActivity(), IMainActivityContract.View{
         supportFragmentManager
             .beginTransaction()
             .add(R.id.fl_main_layer,fragment.toFragment())
-            .commit()
+            .commitAllowingStateLoss()
     }
 
     override fun addFragment(fragment: IBaseFragmentContract.View, transitionView: View) {
