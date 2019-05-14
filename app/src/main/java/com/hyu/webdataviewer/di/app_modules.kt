@@ -34,17 +34,17 @@ val amiiboModule = module{
     single<IRepository<AmiiboData>> { AmiiboDataRepository() }
     factory<IUseCase<List<AmiiboModel>>> {GetAmiiboModelUseCase()}
 
-    single<IDetailViewContract.View> { AmiiboViewFragment() }
-    single<IDetailViewContract.Presenter> { (view : IDetailViewContract.View) -> AmiiboViewPresenter(view) }
+    factory<IDetailViewContract.View> { AmiiboViewFragment() }
+    factory<IDetailViewContract.Presenter> { (view : IDetailViewContract.View) -> AmiiboViewPresenter(view) }
 }
 
 val previewModule = module{
     //IPreviewContract
-    single<IPreviewContract.View> { PreviewFragment() }
-    single<IPreviewContract.Presenter> { (view : IPreviewContract.View) -> PreviewPresenter(view) }
+    factory<IPreviewContract.View> { PreviewFragment() }
+    factory<IPreviewContract.Presenter> { (view : IPreviewContract.View) -> PreviewPresenter(view) }
 
     //IPreviewItemContract
-    single<BaseListAdapter<IPreviewModel>> { PreviewAdaptor() }
+    factory<BaseListAdapter<IPreviewModel>> { PreviewAdaptor() }
     factory<IPreviewItemContract.Presenter> { (view : IPreviewItemContract.View) -> PreviewItemPresenter(view) }
     factory<BaseViewHolder<IPreviewModel>>(named(PreviewAdaptor.VIEW_TYPE_BASIC)) { (parentView : ViewGroup) ->
         PreviewItemHolder(
@@ -59,8 +59,8 @@ val previewModule = module{
 }
 
 val baseModule = module {
-    single<IMainActivityContract.Presenter> { (view : IMainActivityContract.View) -> MainPresenter(view) }
-    single<IBaseFragmentContract.View> { PreviewFragment() }
+    factory<IMainActivityContract.Presenter> { (view : IMainActivityContract.View) -> MainPresenter(view) }
+    factory<IBaseFragmentContract.View> { PreviewFragment() }
 }
 
 val otherModule = module {

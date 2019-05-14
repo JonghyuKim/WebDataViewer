@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <dimen name="preview_item_padding">5dp</dimen>
+    <dimen name="preview_main_image_height">143dp</dimen>
+    <dimen name="preview_discript_text">18dp</dimen>
+    <dimen name="preview_main_image_big_height">243dp</dimen>
+    <dimen name="preview_discript_big_text">23dp</dimen>
+
+    <dimen name="amiibo_main_image_height">400dp</dimen>
+    <dimen name="amiibo_detail_text">40sp</dimen>
+    <dimen name="amiibo_detail_text_margin">8dp</dimen>
+    <dimen name="amiibo_contents_text">16sp</dimen>
+    <dimen name="amiibo_contents_text_padding">10dp</dimen>
+</resources>

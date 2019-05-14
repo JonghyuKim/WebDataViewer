@@ -11,6 +11,7 @@ import com.hyu.webdataviewer.util.log.HLog
  * DummyImageDataLoader
  */
 class ImageDataProxy : IImageLoader {
+    override var onCompliteBinding: (() -> Unit)? = null
 
     private var loadImg: Bitmap? = null
 

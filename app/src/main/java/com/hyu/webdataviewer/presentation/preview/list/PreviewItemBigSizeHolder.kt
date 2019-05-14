@@ -7,6 +7,7 @@ import com.hyu.webdataviewer.R
 import com.hyu.webdataviewer.domain.model.IPreviewModel
 import com.hyu.webdataviewer.presentation.base.BaseViewHolder
 import com.hyu.webdataviewer.presentation.base.IBaseItemContract
+import com.hyu.webdataviewer.util.imageloader.IImageLoader
 import kotlinx.android.synthetic.main.layer_item_preview.view.*
 import org.koin.core.KoinComponent
 import org.koin.core.inject
@@ -18,6 +19,8 @@ class PreviewItemBigSizeHolder(parent: ViewGroup)
 ) , IPreviewItemContract.View , KoinComponent{
 
     private val presenter by inject<IPreviewItemContract.Presenter>{ parametersOf(this) }
+
+    private val imageLoader by inject<IImageLoader>()
 
     override fun bindModel(model : IPreviewModel, itemClickListener: IBaseItemContract.ItemClickListener<IPreviewModel>?){
         presenter.setItemModel(model,itemClickListener)
@@ -32,8 +35,8 @@ class PreviewItemBigSizeHolder(parent: ViewGroup)
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
                 iv_preview_image.transitionName = context.getString(R.string.transition_id_preview) + layoutPosition
             }
-            presenter.bindImage(context, iv_preview_image, model.getPreviewUrl())
-            tv_preview_title.text = model.getPreviewTitle()
+            imageLoader.bindImg(context, iv_preview_image, model.image)
+            tv_preview_title.text = model.name
             setOnClickListener{
                 itemClickListener?.onClick(it, layoutPosition, model)
             }

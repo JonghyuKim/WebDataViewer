@@ -49,24 +49,26 @@ class MainActivity : AppCompatActivity(), IMainActivityContract.View{
 
         previousFragment.sharedElementReturnTransition = TransitionInflater.from(this).inflateTransition(R.transition.transition_detail_fragment)
 
-        previousFragment.exitTransition = TransitionInflater.from(this).inflateTransition(android.R.transition.no_transition)
+        previousFragment.exitTransition = TransitionInflater.from(this).inflateTransition(android.R.transition.fade)
 
         nextFragment.sharedElementEnterTransition = TransitionInflater.from(this).inflateTransition(R.transition.transition_detail_fragment)
 
-        nextFragment.enterTransition = TransitionInflater.from(this).inflateTransition(android.R.transition.no_transition)
+        nextFragment.enterTransition = TransitionInflater.from(this).inflateTransition(android.R.transition.fade)
 
         fragmentTransaction.replace(R.id.fl_main_layer, nextFragment)
-            .addToBackStack(previousFragment.tag)
+            .setReorderingAllowed(true)
+            .addToBackStack(null)
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             fragmentTransaction.addSharedElement(transitionView, transitionView.transitionName)
         }
+
         fragmentTransaction.commit()
     }
 
     override fun onBackPressed() {
         if(supportFragmentManager.backStackEntryCount > 0) {
-            supportFragmentManager.popBackStackImmediate()
+            supportFragmentManager.popBackStack()
         }
         else {
             super.onBackPressed()

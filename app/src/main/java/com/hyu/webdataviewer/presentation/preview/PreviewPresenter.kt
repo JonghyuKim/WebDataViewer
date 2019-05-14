@@ -34,9 +34,9 @@ class PreviewPresenter(private val view: IPreviewContract.View): IPreviewContrac
         val args = Bundle()
         val transitionView = clickView.findViewById<View>(R.id.iv_preview_image)
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            args.putString("transitionName", transitionView.transitionName)
+            args.putString(IDetailViewContract.ARGS_STR_TRANSITION_NAME, transitionView.transitionName)
         }
-        args.putSerializable("model", model)
+        args.putSerializable(IDetailViewContract.ARGS_OBJECT_MODEL, model)
         detailFragment.setArgument(args)
         view.showDetailView(detailFragment, transitionView)
     }

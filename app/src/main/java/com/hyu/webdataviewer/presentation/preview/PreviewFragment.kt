@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.ViewTreeObserver
 import android.widget.ProgressBar
 import com.hyu.webdataviewer.domain.model.IPreviewModel
 import com.hyu.webdataviewer.presentation.base.BaseFragment
@@ -41,12 +42,26 @@ class PreviewFragment : BaseFragment(), IPreviewContract.View {
 
             adapter = listAdapter
 
+            val preDrawListener = object : ViewTreeObserver.OnPreDrawListener{
+                override fun onPreDraw(): Boolean {
+                    viewTreeObserver.removeOnPreDrawListener(this)
+                    startPostponedEnterTransition()
+                    return true
+                }
+            }
+            viewTreeObserver.addOnPreDrawListener(preDrawListener)
+
         }
         progress = mainLayout.pb_progress
 
         presenter.loadModel()
 
         return mainLayout
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        postponeEnterTransition()
     }
 
     override fun showLoading() {
