@@ -85,6 +85,6 @@ class PreviewFragment : BaseFragment(), IPreviewContract.View {
     }
 
     override fun showDetailView(fragment: IBaseFragmentContract.View, transitionView: View) {
-        addFragment(fragment, transitionView)
+        replaceFragment(fragment, transitionView)
     }
 }

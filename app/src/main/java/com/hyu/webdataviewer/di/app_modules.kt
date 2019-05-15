@@ -40,7 +40,7 @@ val amiiboModule = module{
 
 val previewModule = module{
     //IPreviewContract
-    factory<IPreviewContract.View> { PreviewFragment() }
+//    factory<IPreviewContract.View> { PreviewFragment() }
     factory<IPreviewContract.Presenter> { (view : IPreviewContract.View) -> PreviewPresenter(view) }
 
     //IPreviewItemContract

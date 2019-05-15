@@ -18,7 +18,16 @@ class MainActivity : AppCompatActivity(), IMainActivityContract.View{
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        presenter.initLayout()
+
+        savedInstanceState?.let{
+            supportFragmentManager.fragments.forEach {
+                if(it is IBaseFragmentContract.View){
+                    presenter.setNavigator(it)
+            }
+        }
+        } ?: let{
+            presenter.initLayout()
+        }
     }
 
     override fun replaceFragment(fragment: IBaseFragmentContract.View) {
@@ -28,14 +37,7 @@ class MainActivity : AppCompatActivity(), IMainActivityContract.View{
             .commit()
     }
 
-    override fun addFragment(fragment: IBaseFragmentContract.View) {
-        supportFragmentManager
-            .beginTransaction()
-            .add(R.id.fl_main_layer,fragment.toFragment())
-            .commit()
-    }
-
-    override fun addFragment(fragment: IBaseFragmentContract.View, transitionView: View) {
+    override fun replaceFragment(fragment: IBaseFragmentContract.View, transitionView: View) {
         baseTransition(fragment.toFragment(), transitionView)
     }
 
@@ -64,14 +66,5 @@ class MainActivity : AppCompatActivity(), IMainActivityContract.View{
         }
 
         fragmentTransaction.commit()
-    }
-
-    override fun onBackPressed() {
-        if(supportFragmentManager.backStackEntryCount > 0) {
-            supportFragmentManager.popBackStack()
-        }
-        else {
-            super.onBackPressed()
-        }
     }
 }

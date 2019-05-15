@@ -11,12 +11,7 @@ interface IFragmentNavigationContract {
     fun replaceFragment(fragment: IBaseFragmentContract.View)
 
     /**
-     * Fragment add
-     */
-    fun addFragment(fragment: IBaseFragmentContract.View)
-
-    /**
      * Fragment useBackstack & transition
      */
-    fun addFragment(fragment: IBaseFragmentContract.View, transitionView: View)
+    fun replaceFragment(fragment: IBaseFragmentContract.View, transitionView: View)
 }

@@ -24,11 +24,8 @@ abstract class BaseFragment : androidx.fragment.app.Fragment(), IBaseFragmentCon
     override fun replaceFragment(fragment: IBaseFragmentContract.View){
         fragmentNavigation.replaceFragment(fragment)
     }
-    override fun addFragment(fragment: IBaseFragmentContract.View){
-        fragmentNavigation.addFragment(fragment)
-    }
 
-    override fun addFragment(fragment: IBaseFragmentContract.View, transitionView: View) {
-        fragmentNavigation.addFragment(fragment, transitionView)
+    override fun replaceFragment(fragment: IBaseFragmentContract.View, transitionView: View) {
+        fragmentNavigation.replaceFragment(fragment, transitionView)
     }
 }
