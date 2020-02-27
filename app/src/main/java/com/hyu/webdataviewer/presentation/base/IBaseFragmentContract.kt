@@ -13,11 +13,6 @@ interface IBaseFragmentContract{
         fun setArgument(args : Bundle)
 
         /**
-         * Fragment Page Switching manager setting
-         */
-        fun setNavigation(fragmentNavigation : IFragmentNavigationContract)
-
-        /**
          * View convert to fragment
          */
         fun toFragment() : androidx.fragment.app.Fragment

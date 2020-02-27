@@ -1,4 +1,4 @@
-package com.hyu.webdataviewer.data.parser
+package com.hyu.webdataviewer.datasource.parser
 
 import io.reactivex.Observable
 

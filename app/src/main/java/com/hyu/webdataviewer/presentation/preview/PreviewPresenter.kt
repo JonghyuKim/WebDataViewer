@@ -30,14 +30,13 @@ class PreviewPresenter(private val view: IPreviewContract.View): IPreviewContrac
         }
     }
 
-    override fun previewClick(clickView: View, model: IPreviewModel) {
+    override fun previewClick(clickViewIndex: Int, model: IPreviewModel) {
         val args = Bundle()
-        val transitionView = clickView.findViewById<View>(R.id.iv_preview_image)
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            args.putString(IDetailViewContract.ARGS_STR_TRANSITION_NAME, transitionView.transitionName)
+            args.putString(IDetailViewContract.ARGS_STR_TRANSITION_NAME, view.getTransitionName(clickViewIndex))
         }
         args.putSerializable(IDetailViewContract.ARGS_OBJECT_MODEL, model)
         detailFragment.setArgument(args)
-        view.showDetailView(detailFragment, transitionView)
+        view.showTranstionDetailView(detailFragment, clickViewIndex)
     }
 }

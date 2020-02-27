@@ -1,4 +1,4 @@
-package com.hyu.webdataviewer.data.data
+package com.hyu.webdataviewer.datasource.data
 
 import com.google.gson.annotations.SerializedName
 

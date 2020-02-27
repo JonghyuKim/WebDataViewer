@@ -9,23 +9,23 @@ import org.koin.android.ext.android.inject
 import org.koin.core.parameter.parametersOf
 import android.view.View
 import com.hyu.webdataviewer.presentation.base.IBaseFragmentContract
+import com.hyu.webdataviewer.util.log.HLog
 
 
 class MainActivity : AppCompatActivity(), IMainActivityContract.View{
 
     private val presenter by inject<IMainActivityContract.Presenter>{parametersOf(this)}
 
+    override fun onDestroy() {
+        super.onDestroy()
+        HLog.v("onDestroy : ")
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        savedInstanceState?.let{
-            supportFragmentManager.fragments.forEach {
-                if(it is IBaseFragmentContract.View){
-                    presenter.setNavigator(it)
-            }
-        }
-        } ?: let{
+        savedInstanceState ?: let{
             presenter.initLayout()
         }
     }
@@ -37,11 +37,11 @@ class MainActivity : AppCompatActivity(), IMainActivityContract.View{
             .commit()
     }
 
-    override fun replaceFragment(fragment: IBaseFragmentContract.View, transitionView: View) {
-        baseTransition(fragment.toFragment(), transitionView)
+    override fun replaceFragment(fragment: IBaseFragmentContract.View, transitionView: View, transitionName : String?) {
+        baseTransition(fragment.toFragment(), transitionView, transitionName)
     }
 
-    private fun baseTransition(nextFragment : androidx.fragment.app.Fragment, transitionView: View) {
+    private fun baseTransition(nextFragment : androidx.fragment.app.Fragment, transitionView: View, transitionName : String?) {
         if (isDestroyed) {
             return
         }
@@ -61,8 +61,9 @@ class MainActivity : AppCompatActivity(), IMainActivityContract.View{
             .setReorderingAllowed(true)
             .addToBackStack(null)
 
+        HLog.d("transitionName : $transitionName")
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            fragmentTransaction.addSharedElement(transitionView, transitionView.transitionName)
+            fragmentTransaction.addSharedElement(transitionView, transitionName!!)
         }
 
         fragmentTransaction.commit()

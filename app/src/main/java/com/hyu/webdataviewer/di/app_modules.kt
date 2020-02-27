@@ -1,14 +1,14 @@
 package com.hyu.webdataviewer.di
 
 import android.view.ViewGroup
-import com.hyu.webdataviewer.data.data.AmiiboData
-import com.hyu.webdataviewer.data.parser.AmiiboDataParser
+import com.hyu.webdataviewer.datasource.data.AmiiboData
+import com.hyu.webdataviewer.datasource.parser.AmiiboDataParser
 import com.hyu.webdataviewer.util.imageloader.IImageLoader
 import com.hyu.webdataviewer.domain.model.IPreviewModel
-import com.hyu.webdataviewer.data.parser.IDataParser
-import com.hyu.webdataviewer.data.repository.AmiiboDataRepository
-import com.hyu.webdataviewer.data.repository.IRepository
-import com.hyu.webdataviewer.data.requester.*
+import com.hyu.webdataviewer.datasource.parser.IDataParser
+import com.hyu.webdataviewer.datasource.repository.AmiiboDataRepository
+import com.hyu.webdataviewer.domain.datasource.IDataRepository
+import com.hyu.webdataviewer.datasource.requester.*
 import com.hyu.webdataviewer.domain.model.AmiiboModel
 import com.hyu.webdataviewer.domain.usecase.GetAmiiboModelUseCase
 import com.hyu.webdataviewer.domain.usecase.IUseCase
@@ -31,7 +31,7 @@ import org.koin.dsl.module
 val amiiboModule = module{
 
     factory<IDataParser<String, List<AmiiboData>>> { AmiiboDataParser()}
-    single<IRepository<AmiiboData>> { AmiiboDataRepository() }
+    single<IDataRepository<AmiiboModel>> { AmiiboDataRepository() }
     factory<IUseCase<List<AmiiboModel>>> {GetAmiiboModelUseCase()}
 
     factory<IDetailViewContract.View> { AmiiboViewFragment() }

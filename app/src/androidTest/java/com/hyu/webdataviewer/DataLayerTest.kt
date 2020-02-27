@@ -3,12 +3,12 @@ package com.hyu.webdataviewer
 
 import androidx.test.InstrumentationRegistry
 import androidx.test.runner.AndroidJUnit4
-import com.hyu.webdataviewer.data.data.AmiiboData
-import com.hyu.webdataviewer.data.parser.AmiiboDataParser
-import com.hyu.webdataviewer.data.parser.IDataParser
-import com.hyu.webdataviewer.data.requester.HttpClientRequester
-import com.hyu.webdataviewer.data.requester.IDataRequester
-import com.hyu.webdataviewer.data.requester.JsonFileRequester
+import com.hyu.webdataviewer.datasource.data.AmiiboData
+import com.hyu.webdataviewer.datasource.parser.AmiiboDataParser
+import com.hyu.webdataviewer.datasource.parser.IDataParser
+import com.hyu.webdataviewer.datasource.requester.HttpClientRequester
+import com.hyu.webdataviewer.datasource.requester.IDataRequester
+import com.hyu.webdataviewer.datasource.requester.JsonFileRequester
 import com.hyu.webdataviewer.util.log.HLog
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers

@@ -39,7 +39,7 @@ class PreviewItemHolder(parent: ViewGroup)
             imageLoader.bindImg(context, iv_preview_image, model.image)
             tv_preview_title.text = model.name
             setOnClickListener{
-                itemClickListener?.onClick(it, layoutPosition, model)
+                itemClickListener?.onClick(layoutPosition, model)
             }
         }
     }

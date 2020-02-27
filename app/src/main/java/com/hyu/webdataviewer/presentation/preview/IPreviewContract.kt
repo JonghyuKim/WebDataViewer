@@ -6,14 +6,16 @@ import com.hyu.webdataviewer.presentation.base.IBaseFragmentContract
 interface IPreviewContract {
     interface Presenter{
         fun loadModel()
-        fun previewClick(clickView: android.view.View, model : IPreviewModel)
+        fun previewClick(clickViewIndex: Int, model : IPreviewModel)
     }
 
     interface View {
         fun showLoading()
         fun hideLoading()
 
-        fun showDetailView(fragment: IBaseFragmentContract.View, clickView: android.view.View)
+        fun getTransitionName(index: Int) : String?
+
+        fun showTranstionDetailView(fragment: IBaseFragmentContract.View, viewPosition: Int)
 
         /**
          * Setting the modelList in a ListViewAdapter

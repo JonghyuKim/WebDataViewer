@@ -1,8 +1,8 @@
-package com.hyu.webdataviewer.data.parser
+package com.hyu.webdataviewer.datasource.parser
 
 import com.google.gson.Gson
-import com.hyu.webdataviewer.data.data.AmiiboData
-import com.hyu.webdataviewer.data.data.AmiiboDatas
+import com.hyu.webdataviewer.datasource.data.AmiiboData
+import com.hyu.webdataviewer.datasource.data.AmiiboDatas
 import io.reactivex.Observable
 
 class AmiiboDataParser : IDataParser<String, List<AmiiboData>> {

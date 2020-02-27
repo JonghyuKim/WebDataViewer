@@ -24,6 +24,6 @@ interface IBaseItemContract{
      * List Item view Click Listner
      */
     interface ItemClickListener<T>{
-        fun onClick(clickView: android.view.View, index : Int, model : T)
+        fun onClick(index : Int, model : T)
     }
 }
